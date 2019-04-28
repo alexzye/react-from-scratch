@@ -4,8 +4,8 @@
   "description": "putting together a react environment without a prebuild toolchain",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": ""
+    "start": "node_modules/.bin/webpack-dev-server --mode development",
+    "build": "node_modules/.bin/webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
     "node-sass": "^4.12.0",
+    "react-hot-loader": "^4.8.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.30.0",
