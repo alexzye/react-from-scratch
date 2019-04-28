@@ -19,7 +19,7 @@ TLDR of how to make a starter react project from scratch so we don't have a blac
 
 In your project directory:
 
-`mkdir public src`
+`mkdir public src dist`
 
 `public` - houses static resources
 
@@ -51,7 +51,7 @@ In your project directory:
 
 ### Install Babel
 
-```
+```bash
 npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
 ```
 
@@ -63,5 +63,71 @@ Create `.babelrc` on the project root:
 }
 ```
 
+### Install Webpack
 
+```bash
+npm i webpack-dev-server -g
+npm i webpack webpack-cli --save-dev
+npm i style-loader css-loader sass-loader node-sass babel-loader --save-dev
+```
+
+### Install React
+
+```bash
+npm i react react-dom --save
+```
+
+### Create  starter React files
+
+In the `src` directory, create the following files.
+
+```javascript
+// index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.js";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+
+```javascript
+// App.js
+import React, { Component} from "react";
+import {hot} from "react-hot-loader";
+import "./App.scss";
+
+class App extends Component{
+	render(){
+		return(
+			<div className="App">
+				<h1> Hello, World! </h1>
+			</div>
+		);
+	}
+}
+
+export default hot(module)(App);
+```
+
+```scss
+// App.scss
+.App {
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+```
+
+### Start Webpack dev server
+
+From the project root, where `webpack.config.js` is found, use the following command to start a development server:
+
+```bash
+node_modules/.bin/webpack-dev-server --mode development
+```
+
+By default, this does not build files to the `dist` directory. If you want to do that, you must use Webpack by itself.
+
+```bash
+node_modules/.bin/webpack
+```
 
